@@ -71,9 +71,8 @@ public class SkeletonKinectHandler extends JPanel implements Runnable,
 	private boolean handupPreLeft = false;
 	private boolean handupPreRight = false;
 
-	
 	private boolean swiping = false;
-	
+
 	private boolean swipingForLayerChange = false;
 
 	private boolean swipeConsumed = false;
@@ -275,9 +274,9 @@ public class SkeletonKinectHandler extends JPanel implements Runnable,
 			double leftDeltaY = leftPrevCoords.getY() - leftHandCoords.getY();
 
 			// time swipe detection
-			if (handupPreLeft && !swipeConsumed && !swiping && swipeStart != null
-					&& swipeEnd != null) {
-					System.out.println("HALLO LEFT");
+			if (handupPreLeft && !swipeConsumed && !swiping
+					&& swipeStart != null && swipeEnd != null) {
+				System.out.println("HALLO LEFT");
 				if (dist(swipeStart, swipeEnd) > 100) {
 					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 					if (swipeStart.getX() > swipeEnd.getX()) {
@@ -292,19 +291,18 @@ public class SkeletonKinectHandler extends JPanel implements Runnable,
 				swipeStart = null;
 				swipeStart = null;
 
-			}
-			else if (handupPreRight && !swipeConsumed && !swiping && swipeStart != null
-					&& swipeEnd != null) {
+			} else if (handupPreRight && !swipeConsumed && !swiping
+					&& swipeStart != null && swipeEnd != null) {
 				if (dist(swipeStart, swipeEnd) > 100) {
 					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 					if (swipeStart.getX() > swipeEnd.getX()) {
 						System.out.println("right to left");
-						//controller.yearBackward();
+						// controller.yearBackward();
 						controller.changeLayer();
 						System.out.println("CHANGE LAYER BACKWARD HERE");
 					} else if (swipeStart.getX() < swipeEnd.getX()) {
 						System.out.println("left to right");
-						//controller.yearForward();
+						// controller.yearForward();
 						controller.changeLayer();
 						System.out.println("CHANGE LAYER FORWARD HERE");
 					}
@@ -313,8 +311,7 @@ public class SkeletonKinectHandler extends JPanel implements Runnable,
 				swipeStart = null;
 				swipeStart = null;
 
-			}
-			else if ((handupPreLeft || handupPreRight) && swiping) {
+			} else if ((handupPreLeft || handupPreRight) && swiping) {
 				/*
 				 * 
 				 * 

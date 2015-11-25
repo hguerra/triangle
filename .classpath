@@ -2,31 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/GISToolkit.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/gluegen-rt.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/Jama-1.0.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jogl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/log4j-1.2.14.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/osc/javaosc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/processing/core.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/processing/opengl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/worldwind/worldwind.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/worldwind/worldwindx.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/arq-2.8.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/arq-2.8.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/icu4j-3.4.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/iri-0.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/jena-2.6.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/jena-2.6.4-tests.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/junit-4.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/log4j-1.2.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/lucene-core-2.3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/slf4j-api-1.5.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/slf4j-log4j12-1.5.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/stax-api-1.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/wstx-asl-3.2.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/lib/jena/xercesImpl-2.7.1.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/PrimeSense/NITE/Bin/com.primesense.NITE.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/PrimeSense/NITE/Bin/org.OpenNI.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Heitor/workspace/inpe/triangle-lib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

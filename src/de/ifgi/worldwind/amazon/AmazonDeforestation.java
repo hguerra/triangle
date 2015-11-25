@@ -39,9 +39,7 @@ public class AmazonDeforestation {
 
 	@SuppressWarnings("serial")
 	public static class AppFrame extends JFrame {
-		
-		
-		
+
 		RenderableLayer ama2002;
 		RenderableLayer ama2003;
 		RenderableLayer ama2004;
@@ -57,7 +55,7 @@ public class AmazonDeforestation {
 		RenderableLayer ama2006a;
 		RenderableLayer ama2007a;
 		RenderableLayer ama2008a;
-		
+
 		RenderableLayer ama2002b;
 		RenderableLayer ama2003b;
 		RenderableLayer ama2004b;
@@ -65,7 +63,7 @@ public class AmazonDeforestation {
 		RenderableLayer ama2006b;
 		RenderableLayer ama2007b;
 		RenderableLayer ama2008b;
-		
+
 		AnnotationLayer anoLayer2002;
 		AnnotationLayer anoLayer2003;
 		AnnotationLayer anoLayer2004;
@@ -81,7 +79,7 @@ public class AmazonDeforestation {
 		AnnotationLayer anoLayer2006a;
 		AnnotationLayer anoLayer2007a;
 		AnnotationLayer anoLayer2008a;
-		
+
 		AnnotationLayer anoLayer2002b;
 		AnnotationLayer anoLayer2003b;
 		AnnotationLayer anoLayer2004b;
@@ -89,7 +87,7 @@ public class AmazonDeforestation {
 		AnnotationLayer anoLayer2006b;
 		AnnotationLayer anoLayer2007b;
 		AnnotationLayer anoLayer2008b;
-		
+
 		AnnotationLayer generalAnoLayer2002;
 		AnnotationLayer generalAnoLayer2003;
 		AnnotationLayer generalAnoLayer2004;
@@ -97,7 +95,7 @@ public class AmazonDeforestation {
 		AnnotationLayer generalAnoLayer2006;
 		AnnotationLayer generalAnoLayer2007;
 		AnnotationLayer generalAnoLayer2008;
-		
+
 		AnnotationLayer generalAnoLayer2002a;
 		AnnotationLayer generalAnoLayer2003a;
 		AnnotationLayer generalAnoLayer2004a;
@@ -113,12 +111,11 @@ public class AmazonDeforestation {
 		AnnotationLayer generalAnoLayer2006b;
 		AnnotationLayer generalAnoLayer2007b;
 		AnnotationLayer generalAnoLayer2008b;
-		
+
 		ScreenAnnotation logoAnnotation;
-		
-				
+
 		boolean year2002 = false;
-		
+
 		String activeLayer = "c";
 		ArrayList activeLayers = new ArrayList();
 
@@ -158,7 +155,7 @@ public class AmazonDeforestation {
 			layeredPane.doLayout();
 
 			this.printLogo();
-			
+
 			addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent event) {
@@ -173,7 +170,6 @@ public class AmazonDeforestation {
 			this.pack();
 			this.setBounds(0, 0, width, height);
 
-
 			this.controller = new AppFrameController(this);
 
 			DataRetriever dataR = new DataRetriever();
@@ -184,7 +180,7 @@ public class AmazonDeforestation {
 			 * Für die Seiten
 			 */
 
-			addGDPlayer(dataR); //economical
+			addGDPlayer(dataR); // economical
 
 			addLanduseLayer(dataR); // ecological
 
@@ -195,40 +191,41 @@ public class AmazonDeforestation {
 
 			initKinectHandler();
 
-
-			
 		}
 
-		private void printLogo(){
-			
-			PowerOfTwoPaddedImage pic = PowerOfTwoPaddedImage.fromPath("images/DuB_Horizontal_PT.png");
+		private void printLogo() {
+
+			PowerOfTwoPaddedImage pic = PowerOfTwoPaddedImage
+					.fromPath("images/ccst-novo.png");
 			AnnotationLayer annLayer = new AnnotationLayer();
-			
-			ScreenAnnotation logoDWIH = new ScreenAnnotation("", new Point(780,530));
+
+			ScreenAnnotation logoDWIH = new ScreenAnnotation("", new Point(780,
+					530));
 
 			logoDWIH.getAttributes().setImageSource(pic.getPowerOfTwoImage());
 			logoDWIH.getAttributes().setImageRepeat(AVKey.REPEAT_NONE);
 			logoDWIH.getAttributes().setAdjustWidthToText(AVKey.SIZE_FIXED);
-			logoDWIH.getAttributes().setDrawOffset(new Point(100,0));
+			logoDWIH.getAttributes().setDrawOffset(new Point(100, 0));
 			logoDWIH.getAttributes().setHighlightScale(1);
-			
-			logoDWIH.getAttributes().setInsets(new Insets(0,40,0,0));
-			logoDWIH.getAttributes().setSize(new Dimension(265,150));
-			
+
+			logoDWIH.getAttributes().setInsets(new Insets(0, 40, 0, 0));
+			logoDWIH.getAttributes().setSize(new Dimension(265, 150));
+
 			logoDWIH.getAttributes().setImageScale(0.22);
-			logoDWIH.getAttributes().setImageOffset(new Point(10,10));
-			
+			logoDWIH.getAttributes().setImageOffset(new Point(10, 10));
+
 			annLayer.addAnnotation(logoDWIH);
 			insertBeforeBeforeCompass(this.wwd, annLayer);
-			
+
 		}
+
 		private void initKinectHandler() {
 			kinectHandler = new SkeletonKinectHandler(this);
 			kinectHandler.setBounds(15, 585, 224, 168);
 			layeredPane.add(kinectHandler, new Integer(
 					JLayeredPane.DEFAULT_LAYER.intValue() + 1));
 		}
-		
+
 		/**
 		 * @author Umut Tas
 		 */
@@ -270,14 +267,14 @@ public class AmazonDeforestation {
 			activeLayers.add(ama2004);
 			activeLayers.add(anoLayer2004);
 			activeLayers.add(generalAnoLayer2004);
-			
+
 			insertBeforeBeforeCompass(this.getWwd(),
 					new CountryBoundariesLayer());
 
 			controller.flyToPosition(PARA_POS, INITIAL_ZOOM);
 
 		}
-		
+
 		/**
 		 * @author Umut Tas
 		 */
@@ -307,19 +304,15 @@ public class AmazonDeforestation {
 			generalAnoLayer2008a = ((AmazonGDPLayer) ama2008a)
 					.generalInformationLayer();
 
-//			insertBeforeBeforeCompass(this.getWwd(), ama2004);
-//			insertBeforeBeforeCompass(this.getWwd(), anoLayer2004);
-//			insertBeforeBeforeCompass(this.getWwd(), generalAnoLayer2004);
-//
-//			insertBeforeBeforeCompass(this.getWwd(),
-//					new CountryBoundariesLayer());
+			// insertBeforeBeforeCompass(this.getWwd(), ama2004);
+			// insertBeforeBeforeCompass(this.getWwd(), anoLayer2004);
+			// insertBeforeBeforeCompass(this.getWwd(), generalAnoLayer2004);
+			//
+			// insertBeforeBeforeCompass(this.getWwd(),
+			// new CountryBoundariesLayer());
 
-//			controller.flyToPosition(PARA_POS, INITIAL_ZOOM);
+			// controller.flyToPosition(PARA_POS, INITIAL_ZOOM);
 
-			
-
-			
-			
 		}
 
 		/**
@@ -362,31 +355,31 @@ public class AmazonDeforestation {
 			generalAnoLayer2008b = ((AmazonPopAcumLayer) ama2008b)
 					.generalInformationLayer();
 
-//			insertBeforeBeforeCompass(this.getWwd(),
-//					new CountryBoundariesLayer());
-//			insertBeforeBeforeCompass(this.getWwd(), ama2002);
-//			insertBeforeBeforeCompass(this.getWwd(), anoLayer2002);
-//			insertBeforeBeforeCompass(this.getWwd(), generalAnoLayer2002);
-//			controller.flyToPosition(PARA_POS, INITIAL_ZOOM);
+			// insertBeforeBeforeCompass(this.getWwd(),
+			// new CountryBoundariesLayer());
+			// insertBeforeBeforeCompass(this.getWwd(), ama2002);
+			// insertBeforeBeforeCompass(this.getWwd(), anoLayer2002);
+			// insertBeforeBeforeCompass(this.getWwd(), generalAnoLayer2002);
+			// controller.flyToPosition(PARA_POS, INITIAL_ZOOM);
 
 		}
 
-		
-		public void refreshActiveLayers(RenderableLayer layer1, AnnotationLayer layer2, AnnotationLayer layer3){
+		public void refreshActiveLayers(RenderableLayer layer1,
+				AnnotationLayer layer2, AnnotationLayer layer3) {
 			activeLayers = new ArrayList();
 			activeLayers.add(layer1);
 			activeLayers.add(layer2);
 			activeLayers.add(layer3);
 		}
-		
-		public void changeLayers(){
+
+		public void changeLayers() {
 			getWwd().getModel().getLayers().remove(activeLayers.get(0));
 			getWwd().getModel().getLayers().remove(activeLayers.get(1));
 			getWwd().getModel().getLayers().remove(activeLayers.get(2));
 			activeLayers = new ArrayList();
 			setLayerChanger(0);
-			
-			if(activeLayer == "a"){
+
+			if (activeLayer == "a") {
 				activeLayer = "b";
 				getWwd().getModel().getLayers().add(ama2002b);
 				getWwd().getModel().getLayers().add(anoLayer2002b);
@@ -394,8 +387,7 @@ public class AmazonDeforestation {
 				activeLayers.add(ama2002b);
 				activeLayers.add(anoLayer2002b);
 				activeLayers.add(generalAnoLayer2002b);
-			}
-			else if(activeLayer == "b"){
+			} else if (activeLayer == "b") {
 				activeLayer = "c";
 				getWwd().getModel().getLayers().add(ama2004);
 				getWwd().getModel().getLayers().add(anoLayer2004);
@@ -403,8 +395,7 @@ public class AmazonDeforestation {
 				activeLayers.add(ama2004);
 				activeLayers.add(anoLayer2004);
 				activeLayers.add(generalAnoLayer2004);
-			}
-			else if(activeLayer == "c"){
+			} else if (activeLayer == "c") {
 				activeLayer = "a";
 				getWwd().getModel().getLayers().add(ama2004a);
 				getWwd().getModel().getLayers().add(anoLayer2004a);
@@ -414,8 +405,8 @@ public class AmazonDeforestation {
 				activeLayers.add(generalAnoLayer2004a);
 			}
 
-			
 		}
+
 		/**
 		 * @author Umut Tas
 		 */
@@ -713,7 +704,7 @@ public class AmazonDeforestation {
 		public int getLayerChanger() {
 			return layerChanger;
 		}
-		
+
 		public void setLayerChanger(int layerChanger) {
 			this.layerChanger = layerChanger;
 		}
@@ -1084,7 +1075,6 @@ public class AmazonDeforestation {
 			this.activeLayer = activeLayer;
 		}
 
-
 	}
 
 	public static void removeCompass(WorldWindow wwd) {
@@ -1123,7 +1113,6 @@ public class AmazonDeforestation {
 	public static void main(String[] args) {
 		AppFrame app = new AppFrame();
 		app.setVisible(true);
-		
-		
+
 	}
 }

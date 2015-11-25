@@ -70,7 +70,6 @@ public class Skeletons {
 			Color.GREEN, Color.MAGENTA, Color.PINK, Color.YELLOW, Color.WHITE };
 	// same user colors as in TrackersPanel
 
-
 	// OpenNI
 	private UserGenerator userGen;
 	private DepthGenerator depthGen;
@@ -84,7 +83,7 @@ public class Skeletons {
 	private String calibPoseName = null;
 
 	private HashMap<Integer, HashMap<SkeletonJoint, SkeletonJointPosition>> userSkels;
-	
+
 	private boolean skelReady = false;
 	private ArrayList<Point3D> leftHandCoords;
 	private ArrayList<Point3D> rightHandCoords;
@@ -156,7 +155,7 @@ public class Skeletons {
 																	// pose
 			skelCap.setSkeletonProfile(SkeletonProfile.ALL);
 			// other possible values: UPPER_BODY, LOWER_BODY, HEAD_HANDS
-			
+
 			skelCap.setSmoothing(0.2f);
 
 			// set up four observers
@@ -166,7 +165,7 @@ public class Skeletons {
 			userGen.getLostUserEvent().addObserver(new LostUserObserver()); // lost
 																			// a
 																			// user
-			
+
 			userGen.getUserExitEvent().addObserver(new UserExitObserver());
 
 			poseDetectionCap.getPoseDetectedEvent().addObserver(
@@ -175,7 +174,7 @@ public class Skeletons {
 
 			skelCap.getCalibrationCompleteEvent().addObserver(
 					new CalibrationCompleteObserver());
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 			System.exit(1);
@@ -217,7 +216,7 @@ public class Skeletons {
 					skelsGests.checkGests(userID);
 					skelReady = true;
 				}
-				break; //fix for multiple users??
+				break; // fix for multiple users??
 			}
 		} catch (StatusException e) {
 			System.out.println(e);
@@ -250,7 +249,7 @@ public class Skeletons {
 		updateJoint(skel, userID, SkeletonJoint.RIGHT_HIP);
 		updateJoint(skel, userID, SkeletonJoint.RIGHT_KNEE);
 		updateJoint(skel, userID, SkeletonJoint.RIGHT_FOOT);
-//		computeArmLength(userID);
+		// computeArmLength(userID);
 	} // end of updateJoints()
 
 	private void updateJoint(
@@ -290,14 +289,13 @@ public class Skeletons {
 		}
 	} // end of updateJoint()
 
-	public synchronized void addLeftHandPoint(Point3D realPt)
-	{
+	public synchronized void addLeftHandPoint(Point3D realPt) {
 		leftHandCoords.add(realPt);
 		if (leftHandCoords.size() > MAX_POINTS) // get rid of the oldest
 			leftHandCoords.remove(0);
 	}
 
-	public synchronized void addRightHandPoint(Point3D realPt){
+	public synchronized void addRightHandPoint(Point3D realPt) {
 		rightHandCoords.add(realPt);
 		if (rightHandCoords.size() > MAX_POINTS) // get rid of the oldest point
 			rightHandCoords.remove(0);
@@ -309,27 +307,28 @@ public class Skeletons {
 	public void draw(Graphics2D g2d)
 	// draw skeleton of each user, with a head image, and user status
 	{
-		if(skelReady){
-		g2d.setStroke(new BasicStroke(8));
+		if (skelReady) {
+			g2d.setStroke(new BasicStroke(8));
 
-		try {
-			int[] userIDs = userGen.getUsers();
-			for (int i = 0; i < userIDs.length; ++i) {
-				setLimbColor(g2d, userIDs[i]);
-				if (skelCap.isSkeletonCalibrating(userIDs[i])) {
+			try {
+				int[] userIDs = userGen.getUsers();
+				for (int i = 0; i < userIDs.length; ++i) {
+					setLimbColor(g2d, userIDs[i]);
+					if (skelCap.isSkeletonCalibrating(userIDs[i])) {
 
-				} // test to avoid occassional crashes with isSkeletonTracking()
-				else if (skelCap.isSkeletonTracking(userIDs[i])) {
-					HashMap<SkeletonJoint, SkeletonJointPosition> skel = userSkels
-							.get(userIDs[i]);
-					drawSkeleton(g2d, skel);
-//					drawHead(g2d, skel);
+					} // test to avoid occassional crashes with
+						// isSkeletonTracking()
+					else if (skelCap.isSkeletonTracking(userIDs[i])) {
+						HashMap<SkeletonJoint, SkeletonJointPosition> skel = userSkels
+								.get(userIDs[i]);
+						drawSkeleton(g2d, skel);
+						// drawHead(g2d, skel);
+					}
+					// drawUserStatus(g2d, userIDs[i]);
 				}
-				// drawUserStatus(g2d, userIDs[i]);
+			} catch (StatusException e) {
+				System.out.println(e);
 			}
-		} catch (StatusException e) {
-			System.out.println(e);
-		}
 		}
 	} // end of draw()
 
@@ -519,11 +518,10 @@ public class Skeletons {
 			int userID = args.getId();
 			System.out.println("Lost track of user " + userID);
 
-
 			// remove user from the gesture detectors (NEW)
-//			userSkels.remove(userID);
-//			gestSeqs.removeUser(userID);
-//			skelReady = false;
+			// userSkels.remove(userID);
+			// gestSeqs.removeUser(userID);
+			// skelReady = false;
 		}
 	} // end of LostUserObserver inner class
 
@@ -573,32 +571,29 @@ public class Skeletons {
 		}
 
 	} // end of CalibrationCompleteObserver inner class
-	
-	
+
 	class UserExitObserver implements IObserver<UserEventArgs> {
 		public void update(IObservable<UserEventArgs> observable,
 				UserEventArgs args) {
 			int userID = args.getId();
 			System.out.println("User " + userID + " exit");
 
-
 			// remove user from the gesture detectors (NEW)
 			userSkels.remove(userID);
 			gestSeqs.removeUser(userID);
-//			if (userSkels.containsKey(userGen)) {
-				try {
-					
-					skelCap.stopTracking(userID);
-					skelCap.clearSkeletonCalibrationData(userID);
-					skelCap.reset(userID);
-				} catch (StatusException e) {
-//					e.printStackTrace();
-				}
-//			}
+			// if (userSkels.containsKey(userGen)) {
+			try {
+
+				skelCap.stopTracking(userID);
+				skelCap.clearSkeletonCalibrationData(userID);
+				skelCap.reset(userID);
+			} catch (StatusException e) {
+				// e.printStackTrace();
+			}
+			// }
 			skelReady = false;
 		}
 	}
-	
 
 	private void computeArmLength(int userID) {
 		Point3D rightHand = getJointPos(userSkels.get(userID),
