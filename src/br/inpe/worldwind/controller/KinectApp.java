@@ -28,7 +28,6 @@ import org.OpenNI.StatusException;
 import org.OpenNI.UserGenerator;
 
 import bin.kinect.Skeletons;
-import br.inpe.worldwind.layer.VegetationScenarioLayer;
 import br.inpe.worldwind.layer.VegetationScenarioLayer.VegetationScenarioApp;
 
 @SuppressWarnings("serial")

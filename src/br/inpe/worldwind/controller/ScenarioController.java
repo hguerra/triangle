@@ -172,6 +172,13 @@ public class ScenarioController {
 						.getLayers()
 						.remove(appFrame.getVegLayers().get(
 								appFrame.getLayerChanger()));
+
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.remove(appFrame.getAnnotationLayers().get(
+								appFrame.getLayerChanger()));
+
 				// add new
 
 				appFrame.setLayerChanger(appFrame.getLayerChanger() + 1);
@@ -182,6 +189,12 @@ public class ScenarioController {
 						.add(appFrame.getVegLayers().get(
 								appFrame.getLayerChanger()));
 
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.add(appFrame.getAnnotationLayers().get(
+								appFrame.getLayerChanger()));
+
 				// refresh
 
 				appFrame.refreshActiveLayers(appFrame.getVegLayers().get(
@@ -190,10 +203,17 @@ public class ScenarioController {
 			} else {
 
 				// remove old
+
 				appFrame.getWwd()
 						.getModel()
 						.getLayers()
 						.remove(appFrame.getVegLayers().get(
+								appFrame.getLayerChanger()));
+
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.remove(appFrame.getAnnotationLayers().get(
 								appFrame.getLayerChanger()));
 				// add new
 				// reset
@@ -205,31 +225,47 @@ public class ScenarioController {
 						.add(appFrame.getVegLayers().get(
 								appFrame.getLayerChanger()));
 
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.add(appFrame.getAnnotationLayers().get(
+								appFrame.getLayerChanger()));
+
 				// refresh
+
 				appFrame.refreshActiveLayers(appFrame.getVegLayers().get(
 						appFrame.getLayerChanger()));
 			}
 			// B
-		} if( appFrame.getActiveLayer() == "b"){
-			if(appFrame.getLayerChanger() < 10){
-				
-			}else{
-				
+		}
+		if (appFrame.getActiveLayer() == "b") {
+			if (appFrame.getLayerChanger() < 10) {
+
+			} else {
+
 			}
 		}
 
 	}
-	
+
 	public void yearBackward() {
 		if (appFrame.getActiveLayer() == "a") {
 
 			if (appFrame.getLayerChanger() > 1) {
 				// remove old
 
+				// remove old
+
 				appFrame.getWwd()
 						.getModel()
 						.getLayers()
 						.remove(appFrame.getVegLayers().get(
+								appFrame.getLayerChanger()));
+
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.remove(appFrame.getAnnotationLayers().get(
 								appFrame.getLayerChanger()));
 				// add new
 
@@ -241,6 +277,12 @@ public class ScenarioController {
 						.add(appFrame.getVegLayers().get(
 								appFrame.getLayerChanger()));
 
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.add(appFrame.getAnnotationLayers().get(
+								appFrame.getLayerChanger()));
+
 				// refresh
 
 				appFrame.refreshActiveLayers(appFrame.getVegLayers().get(
@@ -249,10 +291,17 @@ public class ScenarioController {
 			} else {
 
 				// remove old
+
 				appFrame.getWwd()
 						.getModel()
 						.getLayers()
 						.remove(appFrame.getVegLayers().get(
+								appFrame.getLayerChanger()));
+
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.remove(appFrame.getAnnotationLayers().get(
 								appFrame.getLayerChanger()));
 				// add new
 				// reset
@@ -264,19 +313,26 @@ public class ScenarioController {
 						.add(appFrame.getVegLayers().get(
 								appFrame.getLayerChanger()));
 
+				appFrame.getWwd()
+						.getModel()
+						.getLayers()
+						.add(appFrame.getAnnotationLayers().get(
+								appFrame.getLayerChanger()));
+
 				// refresh
+
 				appFrame.refreshActiveLayers(appFrame.getVegLayers().get(
 						appFrame.getLayerChanger()));
 			}
 			// B
 		} else if (appFrame.getActiveLayer() == "b") {
-			if(appFrame.getLayerChanger() > 1){
-				
-			}else{
-				
+			if (appFrame.getLayerChanger() > 1) {
+
+			} else {
+
 			}
 		}
-		
+
 	}
 
 }

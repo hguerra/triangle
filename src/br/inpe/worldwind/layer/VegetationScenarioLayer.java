@@ -21,6 +21,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JFrame;
@@ -28,6 +29,7 @@ import javax.swing.JLayeredPane;
 
 import br.inpe.message.properties.DefaultColors;
 import br.inpe.message.properties.DefaultFilePath;
+import br.inpe.worldwind.annotation.VegetationScenearioAnnotation;
 import br.inpe.worldwind.controller.KinectApp;
 import br.inpe.worldwind.controller.ScenarioController;
 
@@ -46,27 +48,16 @@ public class VegetationScenarioLayer {
 		RenderableLayer veg2040;
 		RenderableLayer veg2045;
 		RenderableLayer veg2050;
-		
-		Map<Integer, RenderableLayer> vegLayers = new HashMap<Integer, RenderableLayer>();
-		
-		RenderableLayer def2000;
-		RenderableLayer def2005;
-		RenderableLayer def2010;
-		RenderableLayer def2015;
-		RenderableLayer def2020;
-		RenderableLayer def2025;
-		RenderableLayer def2030;
-		RenderableLayer def2035;
-		RenderableLayer def2040;
-		RenderableLayer def2045;
-		RenderableLayer def2050;
 
+		Map<Integer, RenderableLayer> vegLayers = new HashMap<Integer, RenderableLayer>();
+		Map<Integer, AnnotationLayer> annotationLayers = new HashMap<Integer, AnnotationLayer>();
+		
 		ScreenAnnotation logoAnnotation;
 
 		private ShapefilesLayer shapefile;
 
 		String activeLayer = "a";
-		
+
 		ArrayList activeLayers = new ArrayList();
 
 		private ScenarioController controller;
@@ -123,13 +114,12 @@ public class VegetationScenarioLayer {
 			this.controller = new ScenarioController(this);
 
 			shapefile = new ShapefilesLayer(getWwd());
-		
+
 			/**
 			 * Dados
 			 */
-			
+
 			addVegetationLayer();
-			
 			/**
 			 * Kinect
 			 */
@@ -140,14 +130,12 @@ public class VegetationScenarioLayer {
 		}
 
 		private void printLogo() {
-
 			PowerOfTwoPaddedImage pic = PowerOfTwoPaddedImage
 					.fromPath("images/ccst-novo.png");
 			AnnotationLayer annLayer = new AnnotationLayer();
 
 			ScreenAnnotation logoDWIH = new ScreenAnnotation("", new Point(780,
 					530));
-
 			logoDWIH.getAttributes().setImageSource(pic.getPowerOfTwoImage());
 			logoDWIH.getAttributes().setImageRepeat(AVKey.REPEAT_NONE);
 			logoDWIH.getAttributes().setAdjustWidthToText(AVKey.SIZE_FIXED);
@@ -163,6 +151,24 @@ public class VegetationScenarioLayer {
 			annLayer.addAnnotation(logoDWIH);
 			insertBeforeBeforeCompass(this.wwd, annLayer);
 
+		}
+		
+		public void addAnnotation(){
+			VegetationScenearioAnnotation vegAnnotation = new VegetationScenearioAnnotation();
+			
+			annotationLayers.put(0, vegAnnotation.getTitleAnnotion(0));	
+			annotationLayers.put(1, vegAnnotation.getTitleAnnotion(1));	
+			annotationLayers.put(2, vegAnnotation.getTitleAnnotion(2));	
+			annotationLayers.put(3, vegAnnotation.getTitleAnnotion(3));	
+			annotationLayers.put(4, vegAnnotation.getTitleAnnotion(4));	
+			annotationLayers.put(5, vegAnnotation.getTitleAnnotion(5));	
+			annotationLayers.put(6, vegAnnotation.getTitleAnnotion(6));	
+			annotationLayers.put(7, vegAnnotation.getTitleAnnotion(7));	
+			annotationLayers.put(8, vegAnnotation.getTitleAnnotion(8));	
+			annotationLayers.put(9, vegAnnotation.getTitleAnnotion(9));	
+			annotationLayers.put(10, vegAnnotation.getTitleAnnotion(10));	
+			
+			insertBeforeBeforeCompass(this.wwd, annotationLayers.get(0));
 		}
 
 		private void initKinectHandler() {
@@ -181,74 +187,75 @@ public class VegetationScenarioLayer {
 					DefaultFilePath.VEGTYPE_2000,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2005 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2005,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2010 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2010,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
-			veg2015= shapefile.getRenderableLayer(
+
+			veg2015 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2015,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2020 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2020,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2025 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2025,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2030 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2030,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
-			
+
 			veg2035 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2035,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2040 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2040,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2045 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2045,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
-			
+
 			veg2050 = shapefile.getRenderableLayer(
 					DefaultFilePath.VEGTYPE_2050,
 					DefaultColors.getOriginalColors1(),
 					DefaultColors.getOriginalColors2());
+
+			vegLayers.put(0, veg2000);
+			vegLayers.put(1, veg2005);
+			vegLayers.put(2, veg2010);
+			vegLayers.put(3, veg2015);
+			vegLayers.put(4, veg2020);
+			vegLayers.put(5, veg2025);
+			vegLayers.put(6, veg2030);
+			vegLayers.put(7, veg2035);
+			vegLayers.put(8, veg2040);
+			vegLayers.put(9, veg2045);
+			vegLayers.put(10, veg2050);
 			
-			vegLayers.put(0,veg2000);
-			vegLayers.put(1,veg2005);
-			vegLayers.put(2,veg2010);
-			vegLayers.put(3,veg2015);
-			vegLayers.put(4,veg2020);
-			vegLayers.put(5,veg2025);
-			vegLayers.put(6,veg2030);
-			vegLayers.put(7,veg2035);
-			vegLayers.put(8,veg2040);
-			vegLayers.put(9,veg2045);
-			vegLayers.put(10,veg2050);
-			
+			addAnnotation();
+
 			insertBeforeBeforeCompass(this.getWwd(), veg2000);
-			
+
 			activeLayers.add(veg2000);
-		
+
 			insertBeforeBeforeCompass(this.getWwd(),
 					new CountryBoundariesLayer());
 
@@ -259,7 +266,7 @@ public class VegetationScenarioLayer {
 			activeLayers = new ArrayList();
 			activeLayers.add(layer1);
 		}
-		
+
 		public void refreshActiveLayers(RenderableLayer layer1,
 				AnnotationLayer layer2, AnnotationLayer layer3) {
 			activeLayers = new ArrayList();
@@ -279,21 +286,26 @@ public class VegetationScenarioLayer {
 				activeLayers.add(getVegLayers().get(0));
 			} else if (activeLayer == "b") {
 				activeLayer = "a";
-				//dados ana paula
-			} 
+				// dados ana paula
+			}
 		}
-		
+
 		/**
 		 * Heitor getters and setters
+		 * 
 		 * @return
 		 */
-		
-		
-
-	
 
 		public RenderableLayer getVeg2000() {
 			return veg2000;
+		}
+
+		public Map<Integer, AnnotationLayer> getAnnotationLayers() {
+			return annotationLayers;
+		}
+
+		public void setAnnotationLayers(Map<Integer, AnnotationLayer> annotationLayers) {
+			this.annotationLayers = annotationLayers;
 		}
 
 		public Map<Integer, RenderableLayer> getVegLayers() {
@@ -388,94 +400,6 @@ public class VegetationScenarioLayer {
 			this.veg2050 = veg2050;
 		}
 
-		public RenderableLayer getDef2000() {
-			return def2000;
-		}
-
-		public void setDef2000(RenderableLayer def2000) {
-			this.def2000 = def2000;
-		}
-
-		public RenderableLayer getDef2005() {
-			return def2005;
-		}
-
-		public void setDef2005(RenderableLayer def2005) {
-			this.def2005 = def2005;
-		}
-
-		public RenderableLayer getDef2010() {
-			return def2010;
-		}
-
-		public void setDef2010(RenderableLayer def2010) {
-			this.def2010 = def2010;
-		}
-
-		public RenderableLayer getDef2015() {
-			return def2015;
-		}
-
-		public void setDef2015(RenderableLayer def2015) {
-			this.def2015 = def2015;
-		}
-
-		public RenderableLayer getDef2020() {
-			return def2020;
-		}
-
-		public void setDef2020(RenderableLayer def2020) {
-			this.def2020 = def2020;
-		}
-
-		public RenderableLayer getDef2025() {
-			return def2025;
-		}
-
-		public void setDef2025(RenderableLayer def2025) {
-			this.def2025 = def2025;
-		}
-
-		public RenderableLayer getDef2030() {
-			return def2030;
-		}
-
-		public void setDef2030(RenderableLayer def2030) {
-			this.def2030 = def2030;
-		}
-
-		public RenderableLayer getDef2035() {
-			return def2035;
-		}
-
-		public void setDef2035(RenderableLayer def2035) {
-			this.def2035 = def2035;
-		}
-
-		public RenderableLayer getDef2040() {
-			return def2040;
-		}
-
-		public void setDef2040(RenderableLayer def2040) {
-			this.def2040 = def2040;
-		}
-
-		public RenderableLayer getDef2045() {
-			return def2045;
-		}
-
-		public void setDef2045(RenderableLayer def2045) {
-			this.def2045 = def2045;
-		}
-
-		public RenderableLayer getDef2050() {
-			return def2050;
-		}
-
-		public void setDef2050(RenderableLayer def2050) {
-			this.def2050 = def2050;
-		}
-
 		public ScreenAnnotation getLogoAnnotation() {
 			return logoAnnotation;
 		}
@@ -562,11 +486,10 @@ public class VegetationScenarioLayer {
 		public WorldWindowGLCanvas getWwd() {
 			return wwd;
 		}
+
 		public ScenarioController getController() {
 			return controller;
 		}
-
-		
 
 		public String getActiveLayer() {
 			return activeLayer;
