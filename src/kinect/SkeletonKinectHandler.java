@@ -25,6 +25,7 @@ import org.OpenNI.Point3D;
 import org.OpenNI.StatusException;
 import org.OpenNI.UserGenerator;
 
+import br.inpe.worldwind.layer.VegetationScenarioLayer.VegetationScenarioApp;
 import de.ifgi.worldwind.amazon.AmazonDeforestation.AppFrame;
 import de.ifgi.worldwind.amazon.AppFrameController;
 

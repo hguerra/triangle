@@ -2,6 +2,7 @@ package br.inpe.worldwind.layer;
 
 import gov.nasa.worldwind.BasicModel;
 import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
+import gov.nasa.worldwind.layers.Layer;
 
 import java.awt.Color;
 import java.util.Arrays;
@@ -22,8 +23,8 @@ public class ShapefilesLayerTest extends JFrame {
 	public static final String FILE_PATH_USA = "shapefiles/usa/state_bounds.shp";
 	public static final String FILE_PATH_WORLD = "shapefiles/world/TM_WORLD_BORDERS_SIMPL-0.2.shp";
 	//Modelos
-	public static final String FILE_PATH_DADOS_ANA_PART_1 = "data/LuccME/Triangle_SceB_parte1.shp";
-	public static final String FILE_PATH_DADOS_ANA_PART_2 = "data/LuccME/Triangle_SceB_parte2.shp";
+	public static final String FILE_PATH_DADOS_ANA_PART_1 = "data/LuccME/Triangle_SceB_novaproj_part1.shp";
+	public static final String FILE_PATH_DADOS_ANA_PART_2 = "data/LuccME/Triangle_SceB_novaproj_part2.shp";
 	public static final String FILE_PATH_MODELOS = "data/vegtype-inland/shapefile/";
 	public static final String VEGTYPE_2000 = FILE_PATH_MODELOS+"vegtype_2000.shp";
 	public static final String VEGTYPE_2005 = FILE_PATH_MODELOS+"vegtype_2005.shp";
@@ -55,12 +56,21 @@ public class ShapefilesLayerTest extends JFrame {
 		/**
 		 * Inserindo modelos
 		 */
-		shapefile.insertRenderableLayer(VEGTYPE_2000,
-				DefaultColors.getOriginalColors());
-		
+//		shapefile.insertRenderableLayer(VEGTYPE_2000,
+//				DefaultColors.getOriginalColors1());
+	
+//		shapefile.insertRenderableLayer(VEGTYPE_2005,
+//		DefaultColors.getOriginalColors2());
+
 //		Map<Double, Color> colors = shapefile.getColorScale(
-//				VEGTYPE_2000, DataColors.getColors());
+//				VEGTYPE_2005, DefaultColors.getOriginalColors());
 //		printMapColors(colors);
+		
+		/**
+		 * arrumar
+		 */
+//		shapefile.insertRenderableLayer(VEGTYPE_2000,
+//				DefaultColors.getOriginalColors1(), DefaultColors.getOriginalColors2());
 		
 		/**
 		 * Informacao modelos
@@ -69,6 +79,8 @@ public class ShapefilesLayerTest extends JFrame {
 		
 //		shapefile.insertRenderableLayer(FILE_PATH_DADOS_ANA_PART_1, Color.red, null);
 //		shapefile.insertRenderableLayer(FILE_PATH_DADOS_ANA_PART_2, Color.red, null);
+		
+		//shapefile.printShapefileInfo(VEGTYPE_2005, "attr", true);
 	}
 
 	void printMapColors(Map<Double, Color> colors) {

@@ -18,9 +18,15 @@ public class DefaultColors {
 	public static final Color c13 = new Color(161, 51, 50);// A13332
 	public static final Color c14 = new Color(193, 119, 120);// C17778
 	public static final Color c15 = new Color(223, 187, 187);// DFBBBB
+	public static final Color cNegative127 = Color.decode("#000000");
 	// c1, c2, c9, c10, c12, c3, Color.black
-	public static Color[] getOriginalColors() {
-		Color[] colors = { c1, c2, c9, c10, c12, c3, Color.black };
+	
+	public static Color[] getOriginalColors1() {
+		Color[] colors = { c1, c2, c9, c10, c12, c3, cNegative127 };
+		return colors;
+	}
+	public static Color[] getOriginalColors2() {
+		Color[] colors = { c1, c2, c9, c10, c11, c12, c3, cNegative127 };
 		return colors;
 	}
 }

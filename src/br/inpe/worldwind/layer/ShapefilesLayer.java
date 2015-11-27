@@ -68,6 +68,60 @@ public class ShapefilesLayer {
 			ShapefileInfo.printShapefileAttributs(shapefile);
 		}
 	}
+	/**
+	 * Fix after
+	 * 
+	 * @param filePath
+	 * @param interiorColor
+	 */
+
+	public RenderableLayer getRenderableLayer(String filePath,
+			Color[] interiorColor1, Color[] interiorColor2) {
+		Shapefile shape = createShapeFile(filePath);
+		Shapefile shapeReverse = createShapeFile(filePath);
+		Shapefile shapeColor = createShapeFile(filePath);
+		int size = ShapefileProperties.getShapefileUniqueAttributes(shapeColor,
+				"attr").size();
+		Map<Double, Color> colors;
+		if (size <= 7) {
+			colors = properties.createPolygonColors(shape, "attr",
+					interiorColor1);
+		} else {
+			colors = properties.createPolygonColors(shape, "attr",
+					interiorColor2);
+		}
+		List<Layer> layers = new ArrayList<Layer>();
+
+		properties.addRenderablesForPolygon(shapeReverse, layers, colors);
+		return (RenderableLayer) layers.get(0);
+	}
+	/**
+	 * 
+	 * @param filePath
+	 * @param interiorColor1
+	 * @param interiorColor2
+	 */
+
+	public void insertRenderableLayer(String filePath, Color[] interiorColor1,
+			Color[] interiorColor2) {
+		Shapefile shape = createShapeFile(filePath);
+		Shapefile shapeReverse = createShapeFile(filePath);
+		Shapefile shapeColor = createShapeFile(filePath);
+		int size = ShapefileProperties.getShapefileUniqueAttributes(shapeColor,
+				"attr").size();
+		Map<Double, Color> colors;
+		if (size <= 7) {
+			colors = properties.createPolygonColors(shape, "attr",
+					interiorColor1);
+		} else {
+			colors = properties.createPolygonColors(shape, "attr",
+					interiorColor2);
+		}
+		List<Layer> layers = new ArrayList<Layer>();
+
+		properties.addRenderablesForPolygon(shapeReverse, layers, colors);
+		insertLayerBeforeCompass(layers);
+	}
 
 	public void insertRenderableLayer(String filePath, Color[] interiorColor) {
 		Shapefile shape = createShapeFile(filePath);
