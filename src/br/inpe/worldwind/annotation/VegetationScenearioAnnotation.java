@@ -42,6 +42,17 @@ public class VegetationScenearioAnnotation extends RenderableLayer {
 		sa2.getAttributes().setAdjustWidthToText(AVKey.SIZE_FIT_TEXT);
 		sa2.getAttributes().setHighlightScale(1);
 		annotationLayer.addAnnotation(sa2);
+		
+		ScreenAnnotation sa3 = new ScreenAnnotation(
+				DefaultDataReferences.vegetationScenarioReference, new Point(470,
+						15));
+		sa3.getAttributes().setDefaults(getDefaultAttributsTitle());
+		sa3.getAttributes().setCornerRadius(0);
+		sa3.getAttributes().setFont(Font.decode("Arial-BOLD-22"));
+		sa3.getAttributes().setSize(new Dimension(1300, 0));
+		sa3.getAttributes().setDrawOffset(new Point(100, 0));
+		sa3.getAttributes().setHighlightScale(1);
+		annotationLayer.addAnnotation(sa3);
 
 		return annotationLayer;
 	}

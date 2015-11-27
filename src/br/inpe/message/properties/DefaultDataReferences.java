@@ -3,9 +3,7 @@ package br.inpe.message.properties;
 public class DefaultDataReferences {
 	public final static String vegetationScenarioTitle = "Vegetation Scenario";
 	public final static String vegetationScenarioReference = "Cardoso et al. (2013) "
-			+ "Assessment of additional regional feedbacks and their regional "
-			+ "impacts in the Amazon. Deliverable D8.6 of COMBINE project. "
-			+ "European Commission's 7th Framework Programme, Grant 226520.";
+			+ "COMBINE project. ";
 	
 	
 	public final static String deforestationScenarioTitle = "Deforestation Scenario";

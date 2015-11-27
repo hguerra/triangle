@@ -131,7 +131,7 @@ public class VegetationScenarioLayer {
 
 		private void printLogo() {
 			PowerOfTwoPaddedImage pic = PowerOfTwoPaddedImage
-					.fromPath("images/ccst-novo.png");
+					.fromPath("images/ccst-novo2.png");
 			AnnotationLayer annLayer = new AnnotationLayer();
 
 			ScreenAnnotation logoDWIH = new ScreenAnnotation("", new Point(780,
@@ -143,7 +143,7 @@ public class VegetationScenarioLayer {
 			logoDWIH.getAttributes().setHighlightScale(1);
 
 			logoDWIH.getAttributes().setInsets(new Insets(0, 40, 0, 0));
-			logoDWIH.getAttributes().setSize(new Dimension(265, 150));
+			logoDWIH.getAttributes().setSize(new Dimension(265, 200));
 
 			logoDWIH.getAttributes().setImageScale(0.22);
 			logoDWIH.getAttributes().setImageOffset(new Point(10, 10));
