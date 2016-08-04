@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import kinect.GestureName;
 import kinect.GesturesWatcher;
+import kinect.Skeletons;
 
 import org.OpenNI.Context;
 import org.OpenNI.DepthGenerator;
@@ -27,7 +28,6 @@ import org.OpenNI.Point3D;
 import org.OpenNI.StatusException;
 import org.OpenNI.UserGenerator;
 
-import bin.kinect.Skeletons;
 import br.inpe.worldwind.layer.VegetationScenarioLayer.VegetationScenarioApp;
 
 @SuppressWarnings("serial")
